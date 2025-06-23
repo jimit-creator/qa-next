@@ -203,12 +203,19 @@ const questions: Question[] = [
     "category": "React"
   },
   {
-    "id": 1750684255,
+    "id": 1750684256,
     "question": "What are custom hooks?",
     "answer": "<pre><code>\nimport { useState, useEffect } from 'react';\n// Custom hook to fetch data from an API\nfunction useFetch(url) {\n    const [data, setData] = useState(null);\n    const [loading, setLoading] = useState(true);\n    const [error, setError] = useState(null);\n    useEffect(() =&gt; {\n        const fetchData = async () =&gt; {\n            try {\n                const response = await fetch(url);\n                if !response.ok) {\n        throw new Error('Network response was not ok');\n    }\n    const result = await response.json();\n    setData(result);\n} catch (error) {\n    setError(error);\n} finally {\n    setLoading(false);\n}\n};\nfetchData();\n// Cleanup function\nreturn () =&gt; {\n    // Cleanup logic if needed\n};\n}, [url]); // Dependency array to watch for changes</code></pre>",
     "difficulty": "easy",
     "category": "React"
-  }
+  },
+  {
+    "id": 1750684595,
+    "question": "What are custom hooks?",
+    "answer": "<pre><code>\nimport { useState, useEffect } from 'react';\n// ✅ Custom hook to fetch data\nfunction useFetch(url) {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() =&gt; {\n    const fetchData = async () =&gt; {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) {\n          throw new Error('Network response was not ok');\n        }\n        const result = await response.json();\n        setData(result);\n      } catch (err) {\n        setError(err);\n      } finally {\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n\n    // Optional cleanup\n    return () =&gt; {\n      // abort fetch or cleanup logic if needed\n    };\n  }, [url]);\n\n  return { data, loading, error };\n}\n\n// ✅ Example usage of the custom hook\nfunction MyComponent() {\n  const { data, loading, error } = useFetch('https://api.com/data');\n\n  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;\n  if (error) return &lt;div&gt;Error: {error.message}&lt;/div&gt;;\n\n  return (\n    &lt;div&gt;\n      {data &amp;&amp; (\n        &lt;ul&gt;\n          {data.map(item =&gt; (\n            &lt;li key={item.id}&gt;{item.name}&lt;/li&gt;\n          ))}\n        &lt;/ul&gt;\n      )}\n    &lt;/div&gt;\n  );\n}\n\nexport default MyComponent;\n</code></pre>",
+    "difficulty": "easy",
+    "category": "React"
+  },
 ];
 
 export type Question = {
