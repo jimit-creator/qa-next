@@ -216,6 +216,62 @@ const questions: Question[] = [
     "difficulty": "easy",
     "category": "React"
   },
+  {
+    "id": 1750685123,
+    "question": "How do you optimize your react application?",
+    "answer": "<ul><li><p><strong><em><u>Code Splitting</u></em></strong>: Break down large bundles into smaller chunks to reduce initial load times.</p></li><li><p><strong><em><u>Lazy Loading</u></em></strong>: Load non-essential components\\asynchronously to prioritize critical content.</p></li><li><p><strong><em><u>Caching and Memoization</u></em></strong>: Cache data locally or use memoization libraries to avoid redundant API calls and computations.</p></li><li><p><strong><em><u>Memoization</u></em></strong>: Memoize expensive computations and avoid unnecessary re-renders using tools like React.memo and useMemo.</p></li><li><p><strong><em><u>Optimized Rendering</u></em></strong>: Use shouldComponentUpdate, PureComponent, or React.memo to prevent unnecessary re-renders of components.</p></li><li><p><strong><em><u>Virtualization</u></em></strong>: Implement virtual lists and grids to render only the visible elements, improving rendering performance for large datasets.</p></li><li><p><strong><em><u>Server-Side Rendering (SSR)</u></em></strong>: Pre-render content on the server to improve initial page load times and enhance SEO.</p></li><li><p><strong><em><u>Bundle Analysis</u></em></strong>: Identify and remove unused dependencies, optimize images, and minify code to reduce bundle size.</p></li><li><p><strong><em><u>Performance Monitoring</u></em></strong>: Continuously monitor app performance using tools like Lighthouse, Web Vitals, and browser DevTools.</p></li><li><p><strong><em><u>Optimize rendering with keys</u></em></strong>: Ensure each list item in a mapped array has a unique and stable key prop to optimize rendering performance. Keys help React identify which items have changed, been added, or removed, minimizing unnecessary DOM updates.</p></li><li><p><strong><em><u>CDN Integration</u></em></strong>: Serve static assets and resources from Content Delivery Networks (CDNs) to reduce latency and improve reliability.</p></li></ul>",
+    "difficulty": "easy",
+    "category": "React"
+  },
+  {
+    "id": 1750685814,
+    "question": "What are the difference between Package.json and Package.lock.json",
+    "answer": "<p><strong><em><u>Package.json</u></em></strong>:  is a metadata file that contains information about your project, such as the name, version, description, author, and most importantly, the list of dependencies required for your project to run. This file is used by npm (Node Package Manager) to install, manage, and update dependencies for your project.</p><p><strong><em><u>Package.lock.json</u></em></strong>: is a file that npm generates after installing packages for your project. This file contains a detailed description of the dependencies installed in your project, including their versions and the dependencies of their dependencies. This file is used by npm to ensure that the same version of each package is installed every time, regardless of the platform, environment, or the order of installation.</p>",
+    "difficulty": "easy",
+    "category": "React"
+  },
+  {
+    "id": 1750687194,
+    "question": "How do you secure a Node.js/Express application?",
+    "answer": "<ul><li><p><strong><em><u>Input validation &amp; sanitization:</u></em></strong>First, I ensure all user input is validated and sanitized using libraries like express-validator to prevent XSS and SQL/NoSQL injection.</p></li><li><p><strong><em><u>HTTP Headers:</u></em></strong> I use helmet middleware to set secure HTTP headers and protect against common attacks like clickjacking or XSS.</p></li><li><p><strong><em><u>CORS:</u></em></strong> I restrict API access using the cors middleware by allowing only specific trusted origins.</p></li><li><p><strong><em><u>Authentication:</u></em></strong> For authentication, I use hashed passwords with bcrypt and JWT tokens with short expiry and refresh mechanisms.</p></li><li><p><strong><em><u>Rate Limiting:</u></em></strong> I use express-rate-limit to prevent brute force and abuse of endpoints.</p></li><li><p><strong><em><u>Secure Environment:</u></em></strong> Secrets are stored in .env files, never hardcoded. I use dotenv and never commit sensitive info to git.</p></li><li><p><strong><em><u>Dependency Security:</u></em></strong> I regularly run npm audit, update packages, and avoid unnecessary third-party modules.</p></li><li><p><strong><em><u>Error Handling</u></em></strong>: I prevent leaking stack traces by using centralized error handlers that return generic messages to the client.</p></li><li><p><strong><em><u>Network/Server</u></em></strong>: I use reverse proxies like NGINX, firewalls to close unused ports, and HTTPS via Let’s Encrypt or Cloudflare.</p></li></ul>",
+    "difficulty": "hard",
+    "category": "General"
+  },
+  {
+    "id": 1750687943,
+    "question": "How would you architect an e-commerce/full stack application?",
+    "answer": "<pre><code>1. Feature Planning &amp; Scope 📝\n2. UI/UX Wireframes &amp; Mockups 🎨\n3. System Design Diagram 📐\n4. Database Design (ERD, schemas) 🗃\n5. API Design (Routes, structure) 🌐\n6. Setup Repo &amp; Folder Structure 🗂\n7. Backend Development 🛠\n8. Frontend Development 💻\n9. Integration &amp; Testing ✅\n10. Deployment 🚀</code></pre>",
+    "difficulty": "hard",
+    "category": "General"
+  },
+  {
+    "id": 1750690255,
+    "question": "How do you handle large data sets in MERN applications?",
+    "answer": "<p><strong><u>1. Backend Handling</u></strong></p><p>In the backend, I avoid fetching all 10M records at once. Instead, I use:</p><ul><li><p>Pagination with limit and skip in MongoDB</p></li><li><p>Indexing on frequently queried fields</p></li><li><p>Projection to return only required fields</p></li><li><p>Caching with Redis for frequent queries</p></li><li><p>Cursor-based or keyset pagination for better performance on large datasets</p></li></ul><p><strong><em><u>2. Frontend Handling</u></em></strong></p><p>In the frontend, I implement:</p><ul><li><p>Lazy loading or infinite scroll (e.g., React + Intersection Observer)</p></li><li><p>Client-side caching using SWR/React Query</p></li><li><p>Load only what the user needs (e.g., 20 items per scroll/page)</p></li></ul><p><strong><em><u>3. Performance &amp; Optimization</u></em></strong></p><p>To make the experience fast and scalable:</p><ul><li><p>Use indexes on DB fields (e.g., createdAt, productId)</p></li><li><p>Add caching layers with Redis or memory store</p></li><li><p>Use load balancers and horizontally scale the backend</p></li><li><p>Use cloud DB solutions with replica sets or sharding (MongoDB Atlas)</p></li></ul>",
+    "difficulty": "hard",
+    "category": "General"
+  },
+  {
+    "id": 1750690431,
+    "question": "How do you structure your MERN project?",
+    "answer": "<p>I separate frontend and backend into different folders. The backend follows MVC structure: <strong>models</strong>, <strong>controllers</strong>, <strong>routes</strong>, and <strong>middleware</strong>. The frontend is built with React, where I separate pages, components, hooks, and services (API layer). This keeps code modular and scalable.</p>",
+    "difficulty": "hard",
+    "category": "General"
+  },
+  {
+    "id": 1750690481,
+    "question": "How would you scale your application to handle high traffic?",
+    "answer": "<p>I would use horizontal scaling with multiple instances behind a load balancer. For the backend, I’d make it stateless and store sessions in Redis. For the database, I’d use MongoDB Atlas with sharding and indexing. I’d also use caching (<strong>Redis</strong>) and <strong>CDN</strong> for static content.</p>",
+    "difficulty": "hard",
+    "category": "General"
+  },
+  {
+    "id": 1750690534,
+    "question": "How do you secure your Node.js application?",
+    "answer": "<p>I use Helmet to set secure HTTP headers, express-rate-limit for DDoS protection, and CORS to restrict access. For authentication, I use JWT and hash passwords with <strong>bcrypt</strong>. Sensitive data is stored in <strong>.env</strong>. I also validate and sanitize input to prevent injection attacks.</p>",
+    "difficulty": "hard",
+    "category": "General"
+  }
 ];
 
 export type Question = {
