@@ -38,3 +38,11 @@ body {
   color: #3b4657;
   font-size: 1.2em;
 }
+
+.copyJSON {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
+  overflow: auto;
+}

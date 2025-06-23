@@ -1,3 +1,28 @@
+const questions: Question[] = [
+  {
+    "id": 1750669866,
+    "question": "What is React?",
+    "answer": "<p>React is a <strong>JavaScript library</strong> used for building <strong>user interfaces</strong>, especially <strong>single-page applications</strong> where content updates without refreshing the page.</p><pre><code>function App() {\n  return &lt;h1&gt;Hello, React!&lt;/h1&gt;;\n}</code></pre>",
+    "difficulty": "easy",
+    "category": "React"
+  },
+  {
+    "id": 1750669867,
+    "question": "What are components in React?",
+    "answer": "<p>Components are like <strong>building blocks</strong> of a React app. They are <strong>reusable pieces</strong> of code that return HTML (JSX).</p><p><strong>Types:</strong></p><ul><li><p><strong>Functional components</strong></p></li><li><p><strong>Class components</strong></p></li></ul><pre><code>function Welcome() {\n  return &lt;h2&gt;Welcome to React!&lt;/h2&gt;;\n}</code></pre>",
+    "difficulty": "easy",
+    "category": "React"
+  },
+  {
+    "id": 1750670030,
+    "question": "What is JSX?",
+    "answer": "<p>JSX stands for <strong>JavaScript XML</strong>. It allows you to write HTML inside JavaScript.</p><pre><code>const element = &lt;h1&gt;Hello JSX!&lt;/h1&gt;;</code></pre>",
+    "difficulty": "easy",
+    "category": "React"
+  }
+];
+
+
 export type Question = {
   id: number;
   question: string;
@@ -5,50 +30,5 @@ export type Question = {
   difficulty: string;
   category: string;
 };
-
-const questions: Question[] = [
-  {
-    id: 1,
-    question: "What is React?",
-    answer: "React is a JavaScript library for building user interfaces.",
-    difficulty: "easy",
-    category: "React"
-  },
-  {
-    id: 2,
-    question: "What is Next.js?",
-    answer: "Next.js is a React framework that enables server-side rendering and static site generation.",
-    difficulty: "medium",
-    category: "Next.js"
-  },
-  {
-    id: 3,
-    question: "What is the Virtual DOM?",
-    answer: "The Virtual DOM is a programming concept where a virtual representation of the UI is kept in memory and synced with the real DOM by libraries such as React.",
-    difficulty: "medium",
-    category: "General"
-  },
-  {
-    id: 4,
-    question: "How do you define an Angular component?",
-    answer: `<pre><code>@Component({\n  selector: 'app-hello',\n  template: '&lt;h1&gt;Hello World!&lt;/h1&gt;'\n})\nexport class HelloComponent { }</code></pre>`,
-    difficulty: "medium",
-    category: "Angular"
-  },
-  {
-    id: 42,
-    question: "What is the difference between == and ===?",
-    answer: "<ul><li><code>==</code> checks value only (loose equality).</li><li><code>===</code> checks value and type (strict equality).</li></ul><pre><code>console.log(5 == '5');  // true\nconsole.log(5 === '5'); // false</code></pre>",
-    category: "JavaScript",
-    difficulty: "Beginner"
-  },
-  {
-  "id": 1750665020,
-  "question": "What is CloudFormation and how does it work?",
-  "answer": "<ul><li><p><code>==</code> checks value only (loose equality).</p></li><li><p><code>===</code> checks value and type (strict equality).</p></li></ul><pre><code>console.log(5 == '5');  // true\nconsole.log(5 === '5'); // false</code></pre>",
-  "difficulty": "easy",
-  "category": "React"
-}
-];
 
 export default questions; 

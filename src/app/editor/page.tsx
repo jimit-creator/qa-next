@@ -5,6 +5,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { RichTextEditor } from "@mantine/tiptap";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Underline from '@tiptap/extension-underline';
 import { IconRefresh } from '@tabler/icons-react';
 
 const difficulties = [
@@ -23,7 +24,7 @@ const categories = [
 ];
 
 export default function QuestionEditor() {
-  const [id, setId] = useState(() => Math.floor(Date.now() / 1000));
+  const [id, setId] = useState<number | null>(null);
   const [difficulty, setDifficulty] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
   const [question, setQuestion] = useState("");
@@ -42,13 +43,13 @@ export default function QuestionEditor() {
     onUpdate: ({ editor }) => setQuestion(editor.getHTML()),
   });
   const answerEditor = useEditor({
-    extensions: [StarterKit],
-    content: answer,
+    extensions: [StarterKit, Underline],
+    content: "",
     onUpdate: ({ editor }) => setAnswer(editor.getHTML()),
   });
 
   const questionObj = {
-    id,
+    id: id ?? 0,
     question,
     answer,
     difficulty: difficulty || "",
@@ -61,8 +62,16 @@ export default function QuestionEditor() {
       <Paper p="md" shadow="xs" withBorder>
         <Stack>
           <Group align="end" gap="xs">
-            <TextInput label="ID (Unix timestamp)" value={id} readOnly style={{ flex: 1 }} />
-            <Button variant="light" onClick={() => setId(Math.floor(Date.now() / 1000))} title="Refresh ID" px={8} h={36} mt={22}>
+            <TextInput label="ID (Unix timestamp)" value={id ?? ''} readOnly style={{ flex: 1 }} />
+            <Button
+              variant="light"
+              onClick={() => setId(Math.floor(Date.now() / 1000))}
+              title="Refresh ID"
+              px={8}
+              h={36}
+              mt={22}
+              disabled={id === null}
+            >
               <IconRefresh size={18} />
             </Button>
           </Group>
@@ -122,7 +131,7 @@ export default function QuestionEditor() {
             )}
           </CopyButton>
         </Group>
-        <pre style={{ background: '#f8f9fa', padding: 12, borderRadius: 4, marginTop: 12 }}>
+        <pre className="copyJSON">
           {JSON.stringify(questionObj, null, 2)}
         </pre>
       </Paper>
