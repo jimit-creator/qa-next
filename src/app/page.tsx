@@ -2,7 +2,7 @@
 
 import questions, { type Question } from "../questions";
 import { QUESTIONS_PER_PAGE, ALL_OPTION } from "../constants";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
 // Helper to add Tailwind classes to <pre> and <code> in the answer HTML
 function addCodeClasses(html: string) {
@@ -39,6 +39,7 @@ export default function Home() {
   const [difficulty, setDifficulty] = useState<string>(ALL_OPTION);
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(1);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Get unique categories and difficulties
   const categories = useMemo(() => [ALL_OPTION, ...Array.from(new Set(questions.map(q => q.category)))], []);
@@ -81,6 +82,18 @@ export default function Home() {
   };
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -170,6 +183,16 @@ export default function Home() {
             Next
           </button>
         </div>
+      )}
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={handleScrollToTop}
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 flex items-center justify-center rounded-full bg-white border-2 border-blue-600 shadow-xl hover:bg-blue-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 opacity-90 animate-fade-in"
+          aria-label="Scroll to top"
+        >
+          <span className="text-3xl font-bold text-blue-600">↑</span>
+        </button>
       )}
     </div>
   );
