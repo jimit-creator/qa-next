@@ -112,13 +112,13 @@ export default function QuestionEditor() {
           )}
         </Stack>
       </Paper>
-      <Divider my="md" label="Preview" labelPosition="center" />
+      {/* <Divider my="md" label="Preview" labelPosition="center" />
       <Paper p="md" shadow="xs" withBorder>
         <Text fw={500} mb={4}>Question Preview</Text>
         <div dangerouslySetInnerHTML={{ __html: question }} style={{ background: '#f8f9fa', padding: 12, borderRadius: 4 }} />
         <Text fw={500} mt={16} mb={4}>Answer Preview</Text>
         <div dangerouslySetInnerHTML={{ __html: answer }} style={{ background: '#f8f9fa', padding: 12, borderRadius: 4 }} />
-      </Paper>
+      </Paper> */}
       <Divider my="md" label="Copy JSON" labelPosition="center" />
       <Paper p="md" shadow="xs" withBorder>
         <Group justify="space-between">
