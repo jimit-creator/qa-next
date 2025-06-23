@@ -136,7 +136,7 @@ export default function Home() {
                 </span>
               </div>
               <div
-                className="text-gray-700 mt-2 text-sm sm:text-base leading-relaxed"
+                className="custom-bullets text-gray-700 mt-2 text-sm sm:text-base leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: q.answer }}
               />
             </div>

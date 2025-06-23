@@ -42,6 +42,13 @@ const questions: Question[] = [
     category: "JavaScript",
     difficulty: "Beginner"
   },
+  {
+  "id": 1750665020,
+  "question": "What is CloudFormation and how does it work?",
+  "answer": "<ul><li><p><code>==</code> checks value only (loose equality).</p></li><li><p><code>===</code> checks value and type (strict equality).</p></li></ul><pre><code>console.log(5 == '5');  // true\nconsole.log(5 === '5'); // false</code></pre>",
+  "difficulty": "easy",
+  "category": "React"
+}
 ];
 
 export default questions; 
