@@ -271,6 +271,55 @@ const questions: Question[] = [
     "answer": "<p>I use Helmet to set secure HTTP headers, express-rate-limit for DDoS protection, and CORS to restrict access. For authentication, I use JWT and hash passwords with <strong>bcrypt</strong>. Sensitive data is stored in <strong>.env</strong>. I also validate and sanitize input to prevent injection attacks.</p>",
     "difficulty": "hard",
     "category": "General"
+  },
+  {
+    "id": 1750692232,
+    "question": "What is the difference between let, const, and var in JavaScript?",
+    "answer": "<p>The main differences between let, const, and var are:</p><ul><li><p><strong>var</strong>: Function-scoped, hoisted, can be redeclared</p></li><li><p><strong>let</strong>: Block-scoped, hoisted but not initialized, cannot be redeclared</p></li><li><p><strong>const</strong>: Block-scoped, must be initialized, cannot be reassigned</p></li></ul>",
+    "difficulty": "easy",
+    "category": "JavaScript"
+  },
+  {
+    "id": 1750692350,
+    "question": "What is the difference between == and ===?",
+    "answer": "<p><strong>==</strong> checks value only (loose equality).</p><p><strong>===</strong> checks value and type (strict equality).</p><pre><code>console.log(5 == '5');  // true\nconsole.log(5 === '5'); // false</code></pre><p></p>",
+    "difficulty": "easy",
+    "category": "JavaScript"
+  },
+  {
+    "id": 1750692509,
+    "question": "What are modules in javascript ?",
+    "answer": "<ul><li><p>Modules allows us to break down the large piece of code into smaller parts.</p></li><li><p>Modules helps us to write more reusable and maintenable code.</p></li><li><p>Modules can be imported and exported using import and export statements.</p></li></ul>",
+    "difficulty": "easy",
+    "category": "JavaScript"
+  },
+  {
+    "id": 1750692510,
+    "question": "Whatʼs the spread operator in javascript?",
+    "answer": "<p>The <strong>spread operator (</strong><code>...</code><strong>)</strong> in JavaScript is used to <strong>unpack elements from arrays or objects</strong> and insert them into another array, object, or function call.</p><pre><code>const a = [1, 2];\nconst b = [3, 4];\nconst merged = [...a, ...b];  // [1, 2, 3, 4]</code></pre>",
+    "difficulty": "easy",
+    "category": "JavaScript"
+  },
+  {
+    "id": 1750692717,
+    "question": "What is rest operator in javascript ?",
+    "answer": "<p>The <strong>rest operator (</strong><code>...</code><strong>)</strong> in JavaScript is used to <strong>gather multiple elements into a single array or object</strong>.</p><pre><code>function sum(...numbers) {\n  return numbers.reduce((a, b) =&gt; a + b, 0);\n}\nsum(1, 2, 3); // 6</code></pre>",
+    "difficulty": "easy",
+    "category": "JavaScript"
+  },
+  {
+    "id": 1750692811,
+    "question": "What is the difference between map and filter?",
+    "answer": "<ul><li><p>Both map and filter are useful in JavaScript when working with an arrays.</p></li><li><p>map transforms each element of an array and creates a new array which contains the transformed elements. whereas filter will creates a new array with only those elements which satisfies the specified condition.</p></li></ul>",
+    "difficulty": "easy",
+    "category": "JavaScript"
+  },
+  {
+    "id": 1750692897,
+    "question": "What is the difference between map() and  forEach()",
+    "answer": "<ul><li><p>map method is used to transform the elements of an array. Whereas forEach method is used to loop through the elements of an array.</p></li><li><p>map method will return a new array with the transformed values. forEach method does not return a new array.</p></li><li><p>map method can be used with other array methods like filter method. whereas forEach method cannot be used with other array methods as it does not return any array.</p></li></ul>",
+    "difficulty": "easy",
+    "category": "JavaScript"
   }
 ];
 
