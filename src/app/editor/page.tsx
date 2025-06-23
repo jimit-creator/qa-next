@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TextInput, Select, Button, Group, Paper, Stack, Title, Divider, Text, CopyButton, Notification } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { RichTextEditor } from "@mantine/tiptap";
@@ -31,11 +31,18 @@ export default function QuestionEditor() {
   const [answer, setAnswer] = useState("");
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const copyFnRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     setMounted(true);
     setId(Math.floor(Date.now() / 1000));
   }, []);
+
+  useEffect(() => {
+    if (id !== null && copyFnRef.current) {
+      copyFnRef.current();
+    }
+  }, [id]);
 
   const questionEditor = useEditor({
     extensions: [StarterKit],
@@ -57,61 +64,85 @@ export default function QuestionEditor() {
   };
 
   return (
-    <Stack maw={800} mx="auto" my="xl">
+    <Stack maw={1000} mx="auto" my="xl">
       <Title order={2}>Question & Answer Editor</Title>
-      <Paper p="md" shadow="xs" withBorder>
-        <Stack>
-          <Group align="end" gap="xs">
-            <TextInput label="ID (Unix timestamp)" value={id ?? ''} readOnly style={{ flex: 1 }} />
-            <Button
-              variant="light"
-              onClick={() => setId(Math.floor(Date.now() / 1000))}
-              title="Refresh ID"
-              px={8}
-              h={36}
-              mt={22}
-              disabled={id === null}
-            >
-              <IconRefresh size={18} />
-            </Button>
-          </Group>
-          <Select label="Difficulty" data={difficulties} value={difficulty} onChange={setDifficulty} required searchable />
-          <Select label="Category" data={categories} value={category} onChange={setCategory} required searchable />
-          <TextInput label="Question" value={question} onChange={e => setQuestion(e.target.value)} required />
-          {mounted && (
-            <div>
-              <Text fw={500} mb={4}>Answer (Rich Text)</Text>
-              <RichTextEditor editor={answerEditor}>
-                <RichTextEditor.Toolbar>
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.Bold />
-                    <RichTextEditor.Italic />
-                    <RichTextEditor.Underline />
-                    <RichTextEditor.Strikethrough />
-                    <RichTextEditor.Code />
-                  </RichTextEditor.ControlsGroup>
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.H1 />
-                    <RichTextEditor.H2 />
-                    <RichTextEditor.H3 />
-                  </RichTextEditor.ControlsGroup>
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.BulletList />
-                    <RichTextEditor.OrderedList />
-                    <RichTextEditor.Blockquote />
-                    <RichTextEditor.CodeBlock />
-                  </RichTextEditor.ControlsGroup>
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.Undo />
-                    <RichTextEditor.Redo />
-                  </RichTextEditor.ControlsGroup>
-                </RichTextEditor.Toolbar>
-                {answerEditor && <RichTextEditor.Content />}
-              </RichTextEditor>
-            </div>
-          )}
-        </Stack>
-      </Paper>
+      <Group align="start" gap={8} wrap="wrap" grow>
+        {/* Left: Form */}
+        <Paper p="xs" shadow="xs" withBorder style={{ flex: 1, minWidth: 350, maxWidth: 600 }}>
+          <Stack gap="xs">
+            <Group align="end" gap={4}>
+              <TextInput label="ID (Unix timestamp)" value={id ?? ''} readOnly style={{ flex: 1 }} />
+              <Button
+                variant="light"
+                onClick={() => setId(Math.floor(Date.now() / 1000))}
+                title="Refresh ID"
+                px={6}
+                h={32}
+                mt={18}
+                disabled={id === null}
+              >
+                <IconRefresh size={16} />
+              </Button>
+            </Group>
+            <Select label="Difficulty" data={difficulties} value={difficulty} onChange={setDifficulty} required searchable />
+            <Select label="Category" data={categories} value={category} onChange={setCategory} required searchable />
+            <TextInput label="Question" value={question} onChange={e => setQuestion(e.target.value)} required />
+            {mounted && (
+              <div>
+                <Text fw={500} mb={2} fz={14}>Answer (Rich Text)</Text>
+                <RichTextEditor editor={answerEditor}>
+                  <RichTextEditor.Toolbar>
+                    <RichTextEditor.ControlsGroup>
+                      <RichTextEditor.Bold />
+                      <RichTextEditor.Italic />
+                      <RichTextEditor.Underline />
+                      <RichTextEditor.Strikethrough />
+                      <RichTextEditor.Code />
+                    </RichTextEditor.ControlsGroup>
+                    <RichTextEditor.ControlsGroup>
+                      <RichTextEditor.H1 />
+                      <RichTextEditor.H2 />
+                      <RichTextEditor.H3 />
+                    </RichTextEditor.ControlsGroup>
+                    <RichTextEditor.ControlsGroup>
+                      <RichTextEditor.BulletList />
+                      <RichTextEditor.OrderedList />
+                      <RichTextEditor.Blockquote />
+                      <RichTextEditor.CodeBlock />
+                    </RichTextEditor.ControlsGroup>
+                    <RichTextEditor.ControlsGroup>
+                      <RichTextEditor.Undo />
+                      <RichTextEditor.Redo />
+                    </RichTextEditor.ControlsGroup>
+                  </RichTextEditor.Toolbar>
+                  {answerEditor && <RichTextEditor.Content />}
+                </RichTextEditor>
+              </div>
+            )}
+          </Stack>
+        </Paper>
+        {/* Right: JSON Preview */}
+        <Paper p="xs" shadow="xs" withBorder style={{ flex: 1, minWidth: 150, maxWidth: 400 }}>
+          <Stack gap="xs">
+            <Group justify="space-between">
+              <Text fw={500} fz={14}>Copy the following JSON and paste into <code>questions.ts</code>:</Text>
+              <CopyButton value={JSON.stringify(questionObj, null, 2)} timeout={2000}>
+                {({ copied, copy }) => {
+                  copyFnRef.current = copy;
+                  return (
+                    <Button color={copied ? "teal" : "blue"} onClick={copy} size="xs">
+                      {copied ? "Copied!" : "Copy JSON"}
+                    </Button>
+                  );
+                }}
+              </CopyButton>
+            </Group>
+            <pre style={{ background: '#f8f9fa', padding: 6, borderRadius: 4, fontSize: 12 }}>
+              {JSON.stringify(questionObj, null, 2)}
+            </pre>
+          </Stack>
+        </Paper>
+      </Group>
       {/* <Divider my="md" label="Preview" labelPosition="center" />
       <Paper p="md" shadow="xs" withBorder>
         <Text fw={500} mb={4}>Question Preview</Text>
@@ -119,22 +150,6 @@ export default function QuestionEditor() {
         <Text fw={500} mt={16} mb={4}>Answer Preview</Text>
         <div dangerouslySetInnerHTML={{ __html: answer }} style={{ background: '#f8f9fa', padding: 12, borderRadius: 4 }} />
       </Paper> */}
-      <Divider my="md" label="Copy JSON" labelPosition="center" />
-      <Paper p="md" shadow="xs" withBorder>
-        <Group justify="space-between">
-          <Text>Copy the following JSON and paste into <code>questions.ts</code>:</Text>
-          <CopyButton value={JSON.stringify(questionObj, null, 2)} timeout={2000}>
-            {({ copied, copy }) => (
-              <Button color={copied ? "teal" : "blue"} onClick={copy}>
-                {copied ? "Copied!" : "Copy JSON"}
-              </Button>
-            )}
-          </CopyButton>
-        </Group>
-        <pre className="copyJSON">
-          {JSON.stringify(questionObj, null, 2)}
-        </pre>
-      </Paper>
     </Stack>
   );
 } 
