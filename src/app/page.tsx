@@ -1,6 +1,6 @@
 "use client";
 
-import questions, { type Question } from "../questions";
+import questions from "../questions";
 import { QUESTIONS_PER_PAGE, ALL_OPTION } from "../constants";
 import React, { useMemo, useState, useEffect } from "react";
 

@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { TextInput, Select, Button, Group, Paper, Stack, Title, Divider, Text, CopyButton, Notification } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { TextInput, Select, Button, Group, Paper, Stack, Title, Text, CopyButton } from "@mantine/core";
 import { RichTextEditor } from "@mantine/tiptap";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from '@tiptap/extension-underline';
 import { IconRefresh } from '@tabler/icons-react';
