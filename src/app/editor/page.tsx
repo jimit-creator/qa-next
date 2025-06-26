@@ -28,7 +28,6 @@ export default function QuestionEditor() {
   const [category, setCategory] = useState<string | null>(null);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
-  const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
   const copyFnRef = useRef<(() => void) | null>(null);
 
