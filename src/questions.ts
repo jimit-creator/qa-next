@@ -320,6 +320,27 @@ const questions: Question[] = [
     "answer": "<ul><li><p>map method is used to transform the elements of an array. Whereas forEach method is used to loop through the elements of an array.</p></li><li><p>map method will return a new array with the transformed values. forEach method does not return a new array.</p></li><li><p>map method can be used with other array methods like filter method. whereas forEach method cannot be used with other array methods as it does not return any array.</p></li></ul>",
     "difficulty": "easy",
     "category": "JavaScript"
+  },
+  {
+    "id": 1750935824,
+    "question": "What is the difference between SQL and NoSQL databases?",
+    "answer": "<p>SQL and NoSQL databases differ in their data structure, scalability, and use cases.</p><p><strong><em><u>SQL (MySQL, PostgreSQL)</u></em></strong></p><ul><li><p>Uses tables with rows and columns</p></li><li><p>Requires predefined schema</p></li><li><p>Better for complex queries and relationships</p></li><li><p>ACID compliant</p></li></ul><p><strong><em><u>NoSQL (MongoDB)</u></em></strong></p><ul><li><p>Uses collections of documents</p></li><li><p>Schema-less and flexible</p></li><li><p>Better for scalability and big data</p></li><li><p>Eventually consistent</p></li></ul>",
+    "difficulty": "easy",
+    "category": "Database"
+  },
+  {
+    "id": 1750936118,
+    "question": "What are Indexes in Databases?",
+    "answer": "<p><strong>Indexes</strong> are data structures that improve the speed of data retrieval operations. Think of them like a book's index - instead of reading the whole book to find something, you can quickly look it up in the index.</p><p><strong>MySQL/PGSQL</strong></p><pre><code>-- Creating an index\nCREATE INDEX idx_email ON users(email);\n\n-- Composite index\nCREATE INDEX idx_name_email ON users(name, email);</code></pre><p><strong>Mongo</strong></p><pre><code>// Creating an index\ndb.users.createIndex({ email: 1 });\n\n// Compound index\ndb.users.createIndex({ name: 1, email: 1 });\n\n// Using index in query\ndb.users.find({ email: 'john@example.com' }); // Uses index</code></pre><p><strong>Types of Indexes:</strong></p><ul><li><p><strong>Single-column index</strong>: Index on one column</p></li><li><p><strong>Composite index</strong>: Index on multiple columns</p></li><li><p><strong>Unique index</strong>: Ensures no duplicate values</p></li><li><p><strong>Text index</strong>: For full-text search (MongoDB)</p></li></ul>",
+    "difficulty": "easy",
+    "category": "Database"
+  },
+  {
+    "id": 1750937136,
+    "question": "Tell me about yourself/Introduction",
+    "answer": "<p><strong>My name is Jimit Hothi, and I have over 9 years of experience in the software development industry.</strong> I have worked on multiple domains and technologies. specializing in JavaScript and Node.js and building scalable, secure, and high-performance web applications.</p><p>I have hands-on experience in <strong>both frontend and backend development</strong>. On the frontend, I'm proficient with modern frameworks like <strong>Angular, React </strong>, while on the backend, I develop <strong>RESTful APIs</strong> and services using <strong>Node.js</strong>.</p><p>In terms of cloud experience, I have worked with <strong>Google Cloud Functions</strong> to build and deploy serverless solutions and microservices. I also have experience with Amazon Web Services (AWS), including services like Lambda, S3, CloudWatch, and EC2, for managing cloud infrastructure, deployment automation, and monitoring.</p><p>Throughout my career, I have contributed to various phases of the software development lifecycle—from requirement gathering and system design to development, testing, deployment, and maintenance. I’ve also handled responsibilities such as team coordination, client communication, code reviews, and project delivery.</p><p>I’m comfortable working both independently and collaboratively in agile environments.</p>",
+    "difficulty": "easy",
+    "category": "General"
   }
 ];
 

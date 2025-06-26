@@ -20,6 +20,7 @@ const categories = [
   { value: "General", label: "General" },
   { value: "Angular", label: "Angular" },
   { value: "JavaScript", label: "JavaScript" },
+  { value: "Database", label: "Database" },
 ];
 
 export default function QuestionEditor() {
