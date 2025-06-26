@@ -43,11 +43,6 @@ export default function QuestionEditor() {
     }
   }, [id]);
 
-  const questionEditor = useEditor({
-    extensions: [StarterKit],
-    content: question,
-    onUpdate: ({ editor }) => setQuestion(editor.getHTML()),
-  });
   const answerEditor = useEditor({
     extensions: [StarterKit, Underline],
     content: "",
